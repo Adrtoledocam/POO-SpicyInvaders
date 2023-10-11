@@ -45,7 +45,7 @@ namespace SpaceInvaders
         static void Title()
         {
             Console.WriteLine("---------------");
-            Console.WriteLine("SpicyInvader II");
+            Console.WriteLine("SpicyInvader III");
             Console.WriteLine("---------------");
             Console.WriteLine("");
             Console.WriteLine("");
