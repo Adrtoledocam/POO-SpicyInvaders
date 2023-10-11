@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj",
+      "projectUniqueName": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpaceInvaders.csproj",
       "projectName": "SpaceInvaders",
-      "projectPath": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\SpaceInvaders\\SpaceInvaders.csproj",
+      "projectPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpaceInvaders.csproj",
       "packagesPath": "C:\\Users\\pq17tmn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\SpaceInvaders\\obj\\",
+      "outputPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

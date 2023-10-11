@@ -28,3 +28,18 @@ D:\Escritorio\PC Disco D\OneDrive - Education Vaud\ETML\CID2B\1\POO\Projets\Spac
 D:\Escritorio\PC Disco D\OneDrive - Education Vaud\ETML\CID2B\1\POO\Projets\Space Invaders 01_09\SpaceInvaders\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.pdb
 D:\Escritorio\PC Disco D\OneDrive - Education Vaud\ETML\CID2B\1\POO\Projets\Space Invaders 01_09\SpaceInvaders\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.genruntimeconfig.cache
 D:\Escritorio\PC Disco D\OneDrive - Education Vaud\ETML\CID2B\1\POO\Projets\Space Invaders 01_09\SpaceInvaders\SpaceInvaders\obj\Debug\net6.0\ref\SpaceInvaders.dll
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\bin\Debug\net6.0\SpaceInvaders.exe
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\bin\Debug\net6.0\SpaceInvaders.deps.json
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\bin\Debug\net6.0\SpaceInvaders.runtimeconfig.json
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\bin\Debug\net6.0\SpaceInvaders.dll
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\bin\Debug\net6.0\SpaceInvaders.pdb
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.csproj.AssemblyReference.cache
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.AssemblyInfoInputs.cache
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.AssemblyInfo.cs
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.csproj.CoreCompileInputs.cache
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.dll
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\refint\SpaceInvaders.dll
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.pdb
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\SpaceInvaders.genruntimeconfig.cache
+C:\Users\pq17tmn\Documents\GitHub\POO-SpicyInvaders\SpicyInvaders Code\SpaceInvaders\obj\Debug\net6.0\ref\SpaceInvaders.dll

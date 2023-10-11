@@ -1699,11 +1699,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\Storage_SI\\Storage_SI.csproj",
+      "projectUniqueName": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\Storage_SI\\Storage_SI.csproj",
       "projectName": "Storage_SI",
-      "projectPath": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\Storage_SI\\Storage_SI.csproj",
+      "projectPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\Storage_SI\\Storage_SI.csproj",
       "packagesPath": "C:\\Users\\pq17tmn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pq17tmn\\OneDrive - Education Vaud\\ETML\\CID2B\\1\\POO\\Projets\\Space Invaders 01_09\\SpaceInvaders\\Storage_SI\\obj\\",
+      "outputPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\Storage_SI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

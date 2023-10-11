@@ -11,13 +11,13 @@ using System.Diagnostics;
 //Date : 01.09.2023
 //Description : Réalisation d'un jeux video Spicy Invaders
 
-//Limitar la consola
-//Limitar el movimiento del jugador y corregir
-//Crear enemigos
-//Movimiento de enemigos
-//Disparos
-//Collisiones
-//Muerte enemigos y jugador
+//Limitar la consola OK
+//Limitar el movimiento del jugador y corregir OK
+//Crear enemigos OK
+//Movimiento de enemigos OK
+//Disparos OK
+//Collisiones NO!
+//Muerte enemigos y jugador OK
 //
 
 
@@ -157,6 +157,8 @@ namespace SpaceInvaders
 
             static void Update(Player player, List<Alien> enemies, List<Bullet> bullets)
             {
+                
+
 
                 int limitMapLeft = 10;
                 int limitMapRight = Console.WindowWidth - 20;
@@ -165,6 +167,12 @@ namespace SpaceInvaders
 
                 while (player.isAlive())
                 {
+                    
+
+
+                    Console.CursorVisible = false;
+
+
                     for (int i = 0; i < enemies.Count; i++)
                     {
                         //Task limiter le mouvement enemies
@@ -326,6 +334,8 @@ namespace SpaceInvaders
 
                     }
 
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("Life: 1  Score: 000 ");
 
                     Thread.Sleep(50);
                 }
