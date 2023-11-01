@@ -38,7 +38,7 @@ namespace SpicyInvaders
                     //HighScoreMenu();
                     break;
                 case ConsoleKey.D3:
-                    //ControlMenu();
+                    ControlMenu();
                     break;
                 case ConsoleKey.D4:
                     Environment.Exit(0);
@@ -64,20 +64,17 @@ namespace SpicyInvaders
             player.nickName = nickName;
             List<Alien> enemies = new List<Alien>();
             List<Bullet> bullets = new List<Bullet>();
-
-
-
-
+            Score score = new Score(0);
 
             for (int i = 0; i < totalEnemies; i++)
             {
                 enemies.Add(new Alien(originLimitX + (i * spaceBetweenEnemies), originLimitY, ConsoleColor.Red));
             }
 
-            Update(player, enemies, bullets/*, score*/);
+            Update(player, enemies, bullets, score);
         }
 
-        static void Update(Player player, List<Alien> enemies, List<Bullet> bullets /*,Score score*/)
+        static void Update(Player player, List<Alien> enemies, List<Bullet> bullets ,Score score)
         {
 
             int limitMapLeft = 10;
@@ -89,7 +86,7 @@ namespace SpicyInvaders
                 EnemiesMovement(enemies, limitMapLeft, limitMapRight);
                 PlayerControll(player, limitMapRight, limitMapLeft, bullets);
                 BulletMovement(bullets);
-                CollisionSystem(enemies, bullets, player /*,score*/);
+                CollisionSystem(enemies, bullets, player ,score);
 
                 if (respawnBulletTime == 0)
                 {
@@ -104,29 +101,28 @@ namespace SpicyInvaders
 
                 Console.Clear();
 
-
                 EnemiesDraw(enemies);
                 player.Draw();
                 BulletsDraw(bullets);
+                HudGameDraw(player, score);
 
                 Thread.Sleep(100);
             }
 
-            EndGame(player, enemies /*,score*/);
+            EndGame(player, enemies ,score);
         }
 
-        static void EndGame(Player player, List<Alien> enemie /*Score ,score*/)
+        static void EndGame(Player player, List<Alien> enemie, Score score)
         {
             Console.Clear();
 
-            
-
+            HudGameDraw(player, score);
 
             if (!player.isAlive)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Your Lose");
-                //Console.WriteLine("Score : " + score.points);
+                Console.WriteLine("Score : " + score.points);
                 Console.WriteLine("\n1 - PlayAgain");
                 Console.WriteLine("2 - Menu");
                 Console.WriteLine("3 - Exit");
@@ -150,7 +146,7 @@ namespace SpicyInvaders
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("Your Win");
-                //Console.WriteLine("Score : " + score.points);
+                Console.WriteLine("Score : " + score.points);
                 Console.WriteLine("\n1 - PlayAgain");
                 Console.WriteLine("2 - Menu");
                 Console.WriteLine("3 - Exit");
@@ -272,7 +268,7 @@ namespace SpicyInvaders
             if (enemies.Count != 0) { bullets.Add(new Bullet(enemies[rndEnemey].x + enemies[rndEnemey].assetLimitX / 2, enemies[rndEnemey].y + enemies[rndEnemey].assetLimitY, ConsoleColor.DarkRed, false)); }
         }
 
-        static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player/*, Score score*/)
+        static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player, Score score)
         {
 
             for (int e = 0; e < bullets.Count; e++)
@@ -284,7 +280,7 @@ namespace SpicyInvaders
                     {
                         if ((bullets[e].y >= enemies[i].y && bullets[e].y <= enemies[i].y + 5 && bullets[e].x >= enemies[i].x && bullets[e].x <= enemies[i].x + 10) && bullets.Count != 0 && enemies.Count != 0)
                         {
-                            //score.points += score.pointsForEnemy;
+                            score.points += score.pointsForEnemy;
                             if (enemies[i].life != 1)
                             {
 
@@ -304,7 +300,7 @@ namespace SpicyInvaders
                 {
                     if (bullets[e].y >= player.y && bullets[e].y <= player.dimensionY + player.y && bullets[e].x >= player.x && bullets[e].x <= player.x + player.dimensionX)
                     {
-                        //score.points -= score.pointsForDmg;
+                        score.points -= score.pointsForDmg;
 
                         if (player.life != 1)
                         {
@@ -349,6 +345,34 @@ namespace SpicyInvaders
                 }
             }
         }
+        static void HudGameDraw(Player player, Score score)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("{0} LIVES: {1}", player.nickName, player.life);
+            Console.WriteLine("SCORE: " + score.points);
+        }
+
+        static void ControlMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("SpicyInvader - Controls");
+            Console.WriteLine("-----------------------\n");
+
+            Console.WriteLine("Right Arrow : move to right");
+            Console.WriteLine("Left Arrow : move to left");
+            Console.WriteLine("Space bar : shoot");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to back to menu");
+
+            Console.ReadKey();
+            Console.Clear();
+            Title();
+        }
+
 
     }
 }
