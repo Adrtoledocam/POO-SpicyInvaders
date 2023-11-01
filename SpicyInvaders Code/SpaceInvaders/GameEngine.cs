@@ -35,7 +35,7 @@ namespace SpicyInvaders
                     StartGame();
                     break;
                 case ConsoleKey.D2:
-                    //HighScoreMenu();
+                    HighScoreMenu();
                     break;
                 case ConsoleKey.D3:
                     ControlMenu();
@@ -115,6 +115,8 @@ namespace SpicyInvaders
         static void EndGame(Player player, List<Alien> enemie, Score score)
         {
             Console.Clear();
+            DataBaseConnect databaseConnection = new DataBaseConnect();
+            databaseConnection.SavePoints(player.nickName, score.points);
 
             HudGameDraw(player, score);
 
@@ -349,8 +351,9 @@ namespace SpicyInvaders
         {
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("{0} LIVES: {1}", player.nickName, player.life);
-            Console.WriteLine("SCORE: " + score.points);
+            Console.WriteLine("Player : " + player.nickName);
+            Console.WriteLine("{0} LIVES : " + player.life);
+            Console.WriteLine("SCORE : " + score.points);
         }
 
         static void ControlMenu()
@@ -373,6 +376,28 @@ namespace SpicyInvaders
             Title();
         }
 
+        static void HighScoreMenu()
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
+            DataBaseConnect databaseConnection = new DataBaseConnect();
 
+            Console.WriteLine("------------------------");
+            Console.WriteLine("SpicyInvader - Highscore");
+            Console.WriteLine("------------------------\n");
+            databaseConnection.Highscore();
+            Console.Write("1# - NickName: {0} Points: {1}", databaseConnection.playersName[0], databaseConnection.playersScore[0]);
+            Console.Write("\n2# - NickName: {0} Points: {1}", databaseConnection.playersName[1], databaseConnection.playersScore[1]);
+            Console.Write("\n3# - NickName: {0} Points: {1}", databaseConnection.playersName[2], databaseConnection.playersScore[2]);
+            Console.Write("\n4# - NickName: {0} Points: {1}", databaseConnection.playersName[3], databaseConnection.playersScore[3]);
+            Console.Write("\n5# - NickName: {0} Points: {1}", databaseConnection.playersName[4], databaseConnection.playersScore[4]);
+
+            Console.WriteLine("\n\nPress any key to back to menu");
+
+            Console.ReadKey();
+            Console.Clear();
+            Title();
+
+        }
     }
 }
