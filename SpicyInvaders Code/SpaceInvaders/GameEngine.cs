@@ -89,6 +89,7 @@ namespace SpicyInvaders
                 EnemiesMovement(enemies, limitMapLeft, limitMapRight);
                 PlayerControll(player, limitMapRight, limitMapLeft, bullets);
                 BulletMovement(bullets);
+                CollisionSystem(enemies, bullets, player /*,score*/);
 
                 if (respawnBulletTime == 0)
                 {
@@ -271,6 +272,53 @@ namespace SpicyInvaders
             if (enemies.Count != 0) { bullets.Add(new Bullet(enemies[rndEnemey].x + enemies[rndEnemey].assetLimitX / 2, enemies[rndEnemey].y + enemies[rndEnemey].assetLimitY, ConsoleColor.DarkRed, false)); }
         }
 
+        static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player/*, Score score*/)
+        {
+
+            for (int e = 0; e < bullets.Count; e++)
+            {
+
+                if (bullets[e].fromPlayer)
+                {
+                    for (int i = 0; i < enemies.Count; i++)
+                    {
+                        if ((bullets[e].y >= enemies[i].y && bullets[e].y <= enemies[i].y + 5 && bullets[e].x >= enemies[i].x && bullets[e].x <= enemies[i].x + 10) && bullets.Count != 0 && enemies.Count != 0)
+                        {
+                            //score.points += score.pointsForEnemy;
+                            if (enemies[i].life != 1)
+                            {
+
+                                enemies[i].life--;
+                            }
+                            else
+                            {
+                                enemies.RemoveAt(i);
+                            }
+
+                            bullets.RemoveAt(e);
+
+                        }
+                    }
+                }
+                else
+                {
+                    if (bullets[e].y >= player.y && bullets[e].y <= player.dimensionY + player.y && bullets[e].x >= player.x && bullets[e].x <= player.x + player.dimensionX)
+                    {
+                        //score.points -= score.pointsForDmg;
+
+                        if (player.life != 1)
+                        {
+                            player.life--;
+                        }
+                        else
+                        {
+                            player.isAlive = false;
+                        }
+                        bullets.RemoveAt(e);
+                    }
+                }
+            }
+        }
 
 
         static void EnemiesDraw(List<Alien> enemies)
