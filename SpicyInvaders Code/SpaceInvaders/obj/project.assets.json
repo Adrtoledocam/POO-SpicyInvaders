@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpaceInvaders.csproj",
-      "projectName": "SpaceInvaders",
-      "projectPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpaceInvaders.csproj",
+      "projectUniqueName": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpicyInvaders.csproj",
+      "projectName": "SpicyInvaders",
+      "projectPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\SpicyInvaders.csproj",
       "packagesPath": "C:\\Users\\pq17tmn\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\pq17tmn\\Documents\\GitHub\\POO-SpicyInvaders\\SpicyInvaders Code\\SpaceInvaders\\obj\\",
       "projectStyle": "PackageReference",

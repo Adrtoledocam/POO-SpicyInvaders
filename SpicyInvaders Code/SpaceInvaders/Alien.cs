@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SpaceInvaders;
+using SpicyInvaders;
 
-namespace SpaceInvaders
+namespace SpicyInvaders
 {
-    //Task: creer alien
     internal class Alien
     {
-        //Task: créer attributs
         public int x;
         public int y;
-        public ConsoleColor colorAline;
+        public ConsoleColor colorAlien;
         public int speed = 5;
-        public int life = 1;
-        public ConsoleColor colorBline;
+        public int life = 3;
         public bool alive = true;
 
-        public bool moveRight = true;
         public bool moveLeft = false;
         public bool moveDown = false;
 
-        public bool collisionX = false;
-        public bool collisionY = false;
+        public int assetLimitX = 10;
+        public int assetLimitY = 5;
 
-
-        private string[] drawAlien =
+        private string[] drawAlien3 =
         {
             @"  ▀▄   ▄▀  ",
             @" ▄█▀███▀█▄ ",
@@ -35,56 +30,71 @@ namespace SpaceInvaders
             @"█ █▀▀▀▀▀█ █",
             @"   ▀▀ ▀▀   ",
         };
-        //11 x 5
-        public Alien(int originX, int originY, ConsoleColor colorSkin )
+        //11x5
+        private string[] drawAlien2 =
         {
-            x = originX;
+            @"  ▀▄   ▄▀  ",
+            @" ▄█▀███▀█▄ ",
+            @"█▀███████▀█",
+            @"█ █▀▀      ",
+
+        };
+        // 11x4
+        private string[] drawAlien1 =
+        {
+            @"  ▀▄   ▄▀  ",
+            @" ▄█▀███▀█▄ ",
+            @"█▀ ██ ██ ▀█",
+        };
+        //11 x 3
+        public Alien(int originX, int originY, ConsoleColor colorSkin)
+        {
+            x = originX + 1;
             y = originY;
-            colorAline = colorSkin;
-        }
-
-        //public bool isAlive()
-        //{
-        //    return life> 0;
-        //}
-        public void alienPositions()
-        {
-            List<int> positionsX = new List<int>();
-            List<int> positionsY = new List<int>();
-
-
+            colorAlien = colorSkin;
         }
         public void Draw()
         {
             if (alive)
             {
-                Console.ForegroundColor = colorAline;
-                for (int i = 0; i < 5; i++)
+                Console.ForegroundColor = colorAlien;
+                if (life == 3)
                 {
-                    Console.SetCursorPosition(this.x, this.y + i);
-                    Console.WriteLine(drawAlien[i]);
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.WriteLine(drawAlien3[i]);
+                    }
                 }
-            }
-            else
-            {
-                Console.WriteLine("");
+                else if (life == 2)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.WriteLine(drawAlien2[i]);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.WriteLine(drawAlien1[i]);
+                    }
+                }
 
             }
 
         }
-        //Task: Creer methode alien
-        public void Move(bool moveRightBool)
+        public void Move()
         {
-            int limitLeft = 10;
-            int limitRight = Console.WindowWidth-20;
-            
-            if (!moveRightBool)
+            if (moveLeft)
             {
-                x = x+speed;
+                x = x - speed;
             }
             else
             {
-                x = x-speed;
+                x = x + speed;
             }
         }
     }

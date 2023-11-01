@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceInvaders", "SpaceInvaders\SpaceInvaders.csproj", "{85A70629-F2E1-4E59-8A7C-9E84FFA69CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpicyInvaders", "SpaceInvaders\SpicyInvaders.csproj", "{85A70629-F2E1-4E59-8A7C-9E84FFA69CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storage_SI", "Storage_SI\Storage_SI.csproj", "{9C6967D2-DA36-4850-AA50-EA610B10B9C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage_SI", "Storage_SI\Storage_SI.csproj", "{9C6967D2-DA36-4850-AA50-EA610B10B9C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

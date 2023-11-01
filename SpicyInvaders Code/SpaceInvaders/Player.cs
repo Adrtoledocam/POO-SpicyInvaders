@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 using System.Runtime;
 using System.Diagnostics;
 
-namespace SpaceInvaders
+namespace SpicyInvaders
 {
     internal class Player
     {
         public int x;
         public int y;
-        private ConsoleColor _color;
-        private int speed = 1;
-        private int life = 3;
-        private int armor;
-
-        public bool moveAllowRight =false;
+        public ConsoleColor _color;
+        public int speed = 1;
+        public int life = 3;
+        public bool isAlive = true;
+        public bool moveAllowRight = false;
         public bool moveAllowLeft = false;
+        public bool canAttack = true;
 
-       
-
-
-        //private const string PLAYERDRAW = " X ";
+        public string nickName;
+        public int dimensionX = 13;
+        public int dimensionY = 5;
 
         private string[] drawPlayer =
         {
@@ -31,56 +30,64 @@ namespace SpaceInvaders
             @"█    ███    █",
             @"█ ▄███ ██▄  █",
             @"█▄██ ███ ██▄█",
-            @"██▄█ ███ █▄██"
+            @" █▄█ ███ █▄█ "
         };
 
-
-        public Player()
+        public Player(int originX, int originY, ConsoleColor color)
         {
-            x = 30;
-            y = 55;
-            _color = ConsoleColor.White;
+            x = originX;
+            y = originY;
+            _color = color;
+
             moveAllowLeft = true;
             moveAllowRight = true;
         }
-        public bool isAlive()
-        {
-            return life > 0;
-        }
+
 
         public void Draw()
         {
-            Console.ForegroundColor = _color;
-
-            for (int i=0; i<5; i++)
+            if (life == 3)
             {
-                Console.SetCursorPosition(this.x, this.y + i);
-                Console.WriteLine(drawPlayer[i]);
+                Console.ForegroundColor = _color;
+
+            }
+            else if (life == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+
+            }
+            else if (life == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
             }
 
+            if (life != 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.SetCursorPosition(this.x, this.y + i);
+                    Console.WriteLine(drawPlayer[i]);
+                }
+            }
+            else
+            {
+                Console.WriteLine("      X");
+            }
 
-
-            //Console.SetCursorPosition(x, y);
-            //if (this.isAlive())
-            //{
-            //    Console.Write(PLAYERDRAW);
-            //}
-            //else
-            //{
-            //    Console.ForegroundColor = ConsoleColor.Red;
-            //    Console.Write(PLAYERDRAW);
-
-            //}
         }
         public void Move(bool moveLeft, bool moveRight)
         {
             if (moveLeft)
             {
-                x=x-speed;
+                x = x - speed;
             }
             if (moveRight)
             {
-                x = x+speed;
+                x = x + speed;
             }
         }
 
