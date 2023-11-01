@@ -386,6 +386,7 @@ namespace SpicyInvaders
             Console.WriteLine("SpicyInvader - Highscore");
             Console.WriteLine("------------------------\n");
             databaseConnection.Highscore();
+            databaseConnection.Highscore();
             Console.Write("1# - NickName: {0} Points: {1}", databaseConnection.playersName[0], databaseConnection.playersScore[0]);
             Console.Write("\n2# - NickName: {0} Points: {1}", databaseConnection.playersName[1], databaseConnection.playersScore[1]);
             Console.Write("\n3# - NickName: {0} Points: {1}", databaseConnection.playersName[2], databaseConnection.playersScore[2]);
