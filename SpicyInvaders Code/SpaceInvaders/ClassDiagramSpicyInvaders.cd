@@ -22,13 +22,6 @@
       <FileName>DataBaseConnect.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SpicyInvaders.GameEngine">
-    <Position X="4.25" Y="0.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAkAAAAAAgAAgEQQQABCBAAEAAAAQAAA=</HashCode>
-      <FileName>GameEngine.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SpicyInvaders.MainCode">
     <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
@@ -62,6 +55,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAACIAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.GameEngine">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAkAAAAAAgAAgEQQQABCBAAEAAAAQAAA=</HashCode>
+      <FileName>GameEngine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

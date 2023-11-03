@@ -229,7 +229,6 @@ namespace SpicyInvaders
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.RightArrow:
-                        //Task: limiter le movement
                         if (player._x > limitMapRight)
                         {
                             player.Move(false, false);
@@ -293,13 +292,13 @@ namespace SpicyInvaders
             for (int i = 0; i < enemies.Count; i++)
             {
                 enemies[i].Move();
-
                 if (enemies[i].moveDown)
                 {
                     enemies[i]._y++;
                     enemies[i].moveDown = false;
                 }
             }
+            
         }
         /// <summary>
         /// Methodo qui gère le mouvement de tous les bullets à l'écran.        
@@ -379,6 +378,14 @@ namespace SpicyInvaders
                         bullets.RemoveAt(e);
                     }
                 }
+
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    if (enemies[i]._y+5>=player._y)
+                    {
+                        player._life = 0;
+                    }
+                }
             }
         }
 
@@ -398,6 +405,7 @@ namespace SpicyInvaders
                 {
                     enemies.RemoveAt(i);
                 }
+                
             }
         }
         /// <summary>
