@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SpicyInvaders.Alien">
+    <Position X="8" Y="4" Width="1.5" />
+    <InheritanceLine Type="SpicyInvaders.ObjectBase" FixedToPoint="true">
+      <Path>
+        <Point X="7.375" Y="3.209" />
+        <Point X="7.375" Y="3.625" />
+        <Point X="8.875" Y="3.625" />
+        <Point X="8.875" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAAAAAAAAAAOAAAAAIAAAAACEAEAAA=</HashCode>
+      <FileName>Alien.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.DataBaseConnect">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAiAAAIAAAAAAEAAAAAAAAIAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DataBaseConnect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.GameEngine">
+    <Position X="4.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAkAAAAAAgAAgEQQQABCBAAEAAAAQAAA=</HashCode>
+      <FileName>GameEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.MainCode">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>MainCode.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.ObjectBase">
+    <Position X="6.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAIAAQIAAAAAAEABAAAAAIAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>ObjectBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.Player">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAIAAAAACAMAQAAAAAAAAAAQAABAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.Score">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACgAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpicyInvaders.Bullet">
+    <Position X="9.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACIAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

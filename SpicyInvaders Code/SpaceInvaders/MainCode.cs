@@ -14,13 +14,14 @@ using System.Diagnostics;
 
 namespace SpicyInvaders
 {
-    internal class MainCode
+    public class MainCode
     {
-        static void Main(string[] args)
-        {
+        public static void Main(string[] args)
+        {            
             Console.Title = "Spicy Invaders";
             Console.SetWindowSize(200, 50);
             Console.SetBufferSize(200, 50);
+            
             GameEngine engine = new GameEngine();
         }
     }

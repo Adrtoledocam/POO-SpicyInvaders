@@ -10,11 +10,17 @@ namespace SpicyInvaders
 {
     public class DataBaseConnect
     {
+        /// <summary>
+        /// Initialiser notre DB connexion avec ses valeurs
+        /// </summary>
         private string connectionS = "Server=localhost;Port=6033;Database=db_space_invaders;UserId = root; Password=root;";
 
         public List<String> playersName = new List<String>();
         public List<Int64> playersScore = new List<Int64>();
 
+        /// <summary>
+        /// Méthode de test de la connexion
+        /// </summary>
         public void Connection()
         {
             using (MySqlConnection connection = new MySqlConnection(connectionS))
@@ -23,6 +29,11 @@ namespace SpicyInvaders
                 Debug.Print("Connection Works with database:" + connection);
             }
         }
+        /// <summary>
+        /// Méthode d'enregistrement des points
+        /// </summary>
+        /// <param name="nickName"></param>
+        /// <param name="points"></param>
         public void SavePoints(string nickName, int points)
         {
             using (MySqlConnection connect = new MySqlConnection(connectionS))
@@ -44,7 +55,9 @@ namespace SpicyInvaders
             }
         }
 
-
+        /// <summary>
+        /// Méthode d'enregistrement des résultats du jeu avec le nom du joueur et le score. 
+        /// </summary>
         public void Highscore()
         {
             using (MySqlConnection connect = new MySqlConnection(connectionS))

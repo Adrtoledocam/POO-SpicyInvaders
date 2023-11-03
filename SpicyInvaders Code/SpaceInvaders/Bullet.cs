@@ -9,9 +9,10 @@ namespace SpicyInvaders
 {
     public class Bullet :ObjectBase
     {
-
+        /// <summary>
+        /// Variables spécifiques  à Bullet
+        /// </summary>
         public bool fromPlayer;
-        public bool destroyed;
 
         private string simpleDrawBullet = "█";
         private string drawDeathBullet = "";
@@ -26,7 +27,9 @@ namespace SpicyInvaders
 
             fromPlayer = player;
         }
-
+        /// <summary>
+        ///La méthode Draw() affichera la forme de bullet et son couleur
+        /// </summary>
         public void Draw()
         {
             Console.ForegroundColor = _color;
@@ -36,6 +39,9 @@ namespace SpicyInvaders
             }
             Console.Write(simpleDrawBullet);
         }
+        /// <summary>
+        ///Méthode Move() exprimant le mouvement avec la vitesse sur l'axe des y
+        /// </summary>
         public void Move()
         {
             if (fromPlayer)

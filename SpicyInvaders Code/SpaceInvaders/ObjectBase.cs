@@ -15,7 +15,10 @@ namespace SpicyInvaders
         public int _life { get; set; }
         public bool _isAlive { get; set; }
 
-
+        /// <summary>
+        /// Méthode qui renvoie si l'objet est toujours en vie en fonction du nombre de vies.
+        /// </summary>
+        /// <returns></returns>
         public bool _IsAlive()
         {
             if (_life <= 0)
@@ -27,6 +30,11 @@ namespace SpicyInvaders
                 return true;
             }
         }
+        /// <summary>
+        /// Méthode qui renvoie si l'objet est en dehors de l'axe Y de la console.
+        /// </summary>
+        /// <param name="windowHeight"></param>
+        /// <returns></returns>
         public bool _OutLimitWindowYCheck(int windowHeight)
         {
             if (this._y <= 0 || this._y >= windowHeight)

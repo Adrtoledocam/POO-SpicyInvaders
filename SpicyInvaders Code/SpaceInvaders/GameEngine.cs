@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace SpicyInvaders
 {
-    internal class GameEngine
+    public class GameEngine
     {
         public GameEngine()
         {
             Title();
         }
 
-        static void Title()
+        /// <summary>
+        /// Menu principal du jeu 
+        /// </summary>
+        public static void Title()
         {
             Console.CursorVisible = false;
             Console.Clear();
@@ -52,7 +55,9 @@ namespace SpicyInvaders
                     break;
             }
         }
-
+        /// <summary>
+        /// Initialisation du jeu avec les objets et l'interface
+        /// </summary>
         public static void StartGame()
         {
             Console.WriteLine("\nWrite your Nickname: ");
@@ -81,7 +86,14 @@ namespace SpicyInvaders
             Update(player, enemies, bullets, score);
         }
 
-        static void Update(Player player, List<Alien> enemies, List<Bullet> bullets ,Score score)
+        /// <summary>
+        /// Methodo qui met constamment à jour le jeu pour son gameplay.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="enemies"></param>
+        /// <param name="bullets"></param>
+        /// <param name="score"></param>
+        public static void Update(Player player, List<Alien> enemies, List<Bullet> bullets ,Score score)
         {
 
             int limitMapLeft = 10;
@@ -118,8 +130,13 @@ namespace SpicyInvaders
 
             EndGame(player ,score, true);
         }
-
-        static void EndGame(Player player, Score score, bool savePoints)
+        /// <summary>
+        /// Methodo qui affiche le menu de fin de partie avec les données de la partie.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="score"></param>
+        /// <param name="savePoints"></param>
+        public static void EndGame(Player player, Score score, bool savePoints)
         {
             if(savePoints)
             {
@@ -196,8 +213,14 @@ namespace SpicyInvaders
             }
 
         }
-
-        static void PlayerControll(Player player, int limitMapRight, int limitMapLeft, List<Bullet> bullets)
+        /// <summary>
+        /// Methodo qui gère le contrôle du joueur avec son navire en fonction des touches.
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="limitMapRight"></param>
+        /// <param name="limitMapLeft"></param>
+        /// <param name="bullets"></param>
+        public static void PlayerControll(Player player, int limitMapRight, int limitMapLeft, List<Bullet> bullets)
         {
             while (Console.KeyAvailable)
             {
@@ -241,8 +264,13 @@ namespace SpicyInvaders
                 }
             }
         }
-
-        static void EnemiesMovement(List<Alien> enemies, int limitMapLeft, int limitMapRight)
+        /// <summary>
+        /// Methodo qui gère le mouvement de tous les ennemis à l'écran.        
+        /// /// </summary>
+        /// <param name="enemies"></param>
+        /// <param name="limitMapLeft"></param>
+        /// <param name="limitMapRight"></param>
+        public static void EnemiesMovement(List<Alien> enemies, int limitMapLeft, int limitMapRight)
         {
             if (enemies[0]._x < limitMapLeft)
             {
@@ -273,8 +301,11 @@ namespace SpicyInvaders
                 }
             }
         }
-
-        static void BulletMovement(List<Bullet> bullets)
+        /// <summary>
+        /// Methodo qui gère le mouvement de tous les bullets à l'écran.        
+        /// </summary>
+        /// <param name="bullets"></param>
+        public static void BulletMovement(List<Bullet> bullets)
         {
             if (bullets.Count != 0)
             {
@@ -291,14 +322,25 @@ namespace SpicyInvaders
             }
         }
 
-        static void EnemiesAtack(List<Alien> enemies, List<Bullet> bullets)
+        /// <summary>
+        /// Methodo qui gère l'ataque de tous les enemies avec des bullets
+        /// </summary>
+        /// <param name="bullets"></param>
+        public static void EnemiesAtack(List<Alien> enemies, List<Bullet> bullets)
         {
             Random rnd = new Random();
             int rndEnemey = rnd.Next(0, enemies.Count);
             if (enemies.Count != 0) { bullets.Add(new Bullet(enemies[rndEnemey]._x + enemies[rndEnemey].assetLimitX / 2, enemies[rndEnemey]._y + enemies[rndEnemey].assetLimitY, ConsoleColor.DarkRed, false, 1,1)); }
         }
 
-        static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player, Score score)
+        /// <summary>
+        /// Methodo qui contrôle les collisions du jeu et sa réponse.
+        /// </summary>
+        /// <param name="enemies"></param>
+        /// <param name="bullets"></param>
+        /// <param name="player"></param>
+        /// <param name="score"></param>
+        public static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player, Score score)
         {
 
             for (int e = 0; e < bullets.Count; e++)
@@ -340,8 +382,11 @@ namespace SpicyInvaders
             }
         }
 
-
-        static void EnemiesDraw(List<Alien> enemies)
+        /// <summary>
+        /// Methodo pour afficher tous les ennemis dans le jeu
+        /// </summary>
+        /// <param name="enemies"></param>
+        public static void EnemiesDraw(List<Alien> enemies)
         {
             for (int i = 0; i < enemies.Count; i++)
             {
@@ -355,7 +400,11 @@ namespace SpicyInvaders
                 }
             }
         }
-        static void BulletsDraw(List<Bullet> bullets)
+        /// <summary>
+        /// Methodo pour afficher tous les bullets dans le jeu
+        /// </summary>
+        /// <param name="bullets"></param>
+        public static void BulletsDraw(List<Bullet> bullets)
         {
             for (int i = 0; i < bullets.Count; i++)
             {
@@ -369,7 +418,13 @@ namespace SpicyInvaders
                 }
             }
         }
-        static void HudGameDraw(Player player, Score score)
+
+        /// <summary>
+        /// Methodo pour afficher l'interface du jeu 
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="score"></param>
+        public static void HudGameDraw(Player player, Score score)
         {
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
@@ -378,7 +433,10 @@ namespace SpicyInvaders
             Console.WriteLine("SCORE : " + score.points);
         }
 
-        static void ControlMenu()
+        /// <summary>
+        /// Methodo pour afficher le menu de controlles du jeu
+        /// </summary>
+        public static void ControlMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;
@@ -397,8 +455,10 @@ namespace SpicyInvaders
             Console.Clear();
             Title();
         }
-
-        static void HighScoreMenu()
+        /// <summary>
+        ///Methodo pour afficher le menu de Highscore du jeu
+        /// </summary>
+        public static void HighScoreMenu()
         {
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.White;

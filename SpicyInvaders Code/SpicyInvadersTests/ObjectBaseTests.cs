@@ -11,6 +11,9 @@ namespace SpicyInvaders.Tests
     [TestClass()]
     public class ObjectBaseTests
     {
+        /// <summary>
+        /// UnitTesting pour verifier si l'object il est mort
+        /// </summary>
         [TestMethod()]
         public void _IsAliveTest()
         {
@@ -24,6 +27,9 @@ namespace SpicyInvaders.Tests
             Assert.IsTrue(player1._IsAlive() == false);
         }
 
+        /// <summary>
+        /// UnitTesting pour verifier si l'object est dans la console
+        /// </summary>
         [TestMethod()]
         public void _OutLimitWindowYCheckTest()
         {

@@ -7,9 +7,11 @@ using SpicyInvaders;
 
 namespace SpicyInvaders
 {
-    internal class Alien : ObjectBase
+    public class Alien : ObjectBase
     {
-
+        /// <summary>
+        /// Variables spécifiques  à Alien
+        /// </summary>
         public bool moveLeft = false;
         public bool moveDown = false;
 
@@ -24,7 +26,7 @@ namespace SpicyInvaders
             @"█ █▀▀▀▀▀█ █",
             @"   ▀▀ ▀▀   ",
         };
-        //11x5
+     
         private string[] drawAlien2 =
         {
             @"  ▀▄   ▄▀  ",
@@ -33,14 +35,14 @@ namespace SpicyInvaders
             @"█ █▀▀      ",
 
         };
-        // 11x4
+        
         private string[] drawAlien1 =
         {
             @"  ▀▄   ▄▀  ",
             @" ▄█▀███▀█▄ ",
             @"█▀ ██ ██ ▀█",
         };
-        //11 x 3
+        
         public Alien(int originX, int originY, ConsoleColor colorSkin, int speed, int life)
         {
             _x = originX + 1;
@@ -49,6 +51,9 @@ namespace SpicyInvaders
             _speed = speed;
             _life = life;
         }
+        /// <summary>
+        /// La méthode Draw() affichera la forme de l'alien en fonction de sa quantité de vie.
+        /// </summary>
         public void Draw()
         {
             if (this._IsAlive())
@@ -82,6 +87,9 @@ namespace SpicyInvaders
             }
 
         }
+        /// <summary>
+        ///Méthode Move() exprimant le mouvement avec la vitesse sur l'axe des x
+        /// </summary>
         public void Move()
         {
             if (moveLeft)

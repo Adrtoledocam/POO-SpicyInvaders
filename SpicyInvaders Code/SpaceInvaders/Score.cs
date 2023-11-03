@@ -11,11 +11,16 @@ namespace SpicyInvaders
         public int points;
         public int pointsForEnemy = 200;
         public int pointsForDmg = 50;
+
+        /// <summary>
+        /// Méthode de score qui demande d'enregistrer le nombre initial de points
+        /// </summary>
+        /// <param name="scoreO"></param>
         public Score(int scoreO)
         {
 
             points = scoreO;
         }
-
+        
     }
 }

@@ -27,6 +27,14 @@ namespace SpicyInvaders
             @" █▄█ ███ █▄█ "
         };
 
+        /// <summary>
+        /// Initialisation de l'objet et enregistrement de ses valeurs
+        /// </summary>
+        /// <param name="originX"></param>
+        /// <param name="originY"></param>
+        /// <param name="color"></param>
+        /// <param name="speed"></param>
+        /// <param name="life"></param>
         public Player(int originX, int originY, ConsoleColor color, int speed, int life )
         {
             _x = originX;
@@ -39,7 +47,9 @@ namespace SpicyInvaders
             moveAllowRight = true;
         }
 
-
+        /// <summary>
+        /// La méthode Draw() affichera la forme de le player avec different couleur en fonction de sa quantité de vie.
+        /// </summary>
         public void Draw()
         {
             if (_life == 3)
@@ -75,6 +85,13 @@ namespace SpicyInvaders
             }
 
         }
+        /// <summary>
+        /// /// <summary>
+        ///Méthode Move() exprimant le mouvement avec la vitesse sur l'axe des x et en funcition de le sens de mouvement
+        /// </summary>
+        /// </summary>
+        /// <param name="moveLeft"></param>
+        /// <param name="moveRight"></param>
         public void Move(bool moveLeft, bool moveRight)
         {
             if (moveLeft)
