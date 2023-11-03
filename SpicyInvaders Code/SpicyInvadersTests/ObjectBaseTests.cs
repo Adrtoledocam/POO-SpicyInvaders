@@ -34,14 +34,10 @@ namespace SpicyInvaders.Tests
         public void _OutLimitWindowYCheckTest()
         {
             //Arrange
-            Bullet bullet = new Bullet(0, 0, ConsoleColor.Red, true, 0, 1);
-            Bullet bullet1 = new Bullet(0, 0, ConsoleColor.Red, true, 0, 1);
-            Bullet bullet2 = new Bullet(0, 0, ConsoleColor.Red, true, 0, 1);
+            Bullet bullet = new Bullet(0, -3, ConsoleColor.Red, true, 0, 1);
+            Bullet bullet1 = new Bullet(0, 1000, ConsoleColor.Red, true, 0, 1);
+            Bullet bullet2 = new Bullet(0, 10, ConsoleColor.Red, true, 0, 1);
 
-            //Act
-            bullet._y = -3;
-            bullet1._y = 1000;
-            bullet2._y = 10;
 
             //Assert
             Assert.IsTrue(bullet._OutLimitWindowYCheck(100) == true);
