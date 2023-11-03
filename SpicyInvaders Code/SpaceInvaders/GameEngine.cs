@@ -18,7 +18,7 @@ namespace SpicyInvaders
             Console.CursorVisible = false;
             Console.Clear();
 
-
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("------------");
             Console.WriteLine("SpicyInvader");
             Console.WriteLine("------------\n");
@@ -27,6 +27,9 @@ namespace SpicyInvaders
             Console.WriteLine("2. Highscore");
             Console.WriteLine("3. Controls Game");
             Console.WriteLine("4. Exit");
+
+            Console.WriteLine("\n\nPress your number option");
+
 
             ConsoleKeyInfo keyPressed = Console.ReadKey(true);
             switch (keyPressed.Key)
@@ -42,6 +45,10 @@ namespace SpicyInvaders
                     break;
                 case ConsoleKey.D4:
                     Environment.Exit(0);
+                    break;
+                default:
+                    Console.Clear();
+                    Title();
                     break;
             }
         }
@@ -60,7 +67,7 @@ namespace SpicyInvaders
 
             int spaceBetweenEnemies = 13;
 
-            Player player = new Player(originLimitX, Console.WindowHeight - 6, ConsoleColor.Green);
+            Player player = new Player(originLimitX, Console.WindowHeight - 6, ConsoleColor.Green,4,3);
             player.nickName = nickName;
             List<Alien> enemies = new List<Alien>();
             List<Bullet> bullets = new List<Bullet>();
@@ -68,7 +75,7 @@ namespace SpicyInvaders
 
             for (int i = 0; i < totalEnemies; i++)
             {
-                enemies.Add(new Alien(originLimitX + (i * spaceBetweenEnemies), originLimitY, ConsoleColor.Red));
+                enemies.Add(new Alien(originLimitX + (i * spaceBetweenEnemies), originLimitY, ConsoleColor.Red,2,3));
             }
 
             Update(player, enemies, bullets, score);
@@ -78,10 +85,10 @@ namespace SpicyInvaders
         {
 
             int limitMapLeft = 10;
-            int limitMapRight = Console.WindowWidth - 20;
-            int respawnBulletTime = 5;
+            int limitMapRight = Console.BufferWidth - 20;
+            int respawnBulletTime = 6;
 
-            while (player.isAlive && enemies.Count != 0)
+            while (player._IsAlive() && enemies.Count != 0)
             {
                 EnemiesMovement(enemies, limitMapLeft, limitMapRight);
                 PlayerControll(player, limitMapRight, limitMapLeft, bullets);
@@ -109,25 +116,33 @@ namespace SpicyInvaders
                 Thread.Sleep(100);
             }
 
-            EndGame(player, enemies ,score);
+            EndGame(player ,score, true);
         }
 
-        static void EndGame(Player player, List<Alien> enemie, Score score)
+        static void EndGame(Player player, Score score, bool savePoints)
         {
-            Console.Clear();
-            DataBaseConnect databaseConnection = new DataBaseConnect();
-            databaseConnection.SavePoints(player.nickName, score.points);
+            if(savePoints)
+            {
+                try
+                {
+                    Console.Clear();
+                    DataBaseConnect databaseConnection = new DataBaseConnect();
+                    databaseConnection.SavePoints(player.nickName, score.points);
+                }
+                catch
+                {
+                }
+            }            
 
-            HudGameDraw(player, score);
-
-            if (!player.isAlive)
+            if (!player._IsAlive())
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Your Lose");
+                Console.WriteLine("Your Lose " + player.nickName);
                 Console.WriteLine("Score : " + score.points);
                 Console.WriteLine("\n1 - PlayAgain");
                 Console.WriteLine("2 - Menu");
                 Console.WriteLine("3 - Exit");
+                Console.WriteLine("\nPress your number option");
                 ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 switch (keyPressed.Key)
                 {
@@ -140,6 +155,10 @@ namespace SpicyInvaders
                         break;
                     case ConsoleKey.D3:
                         Environment.Exit(0);
+                        break;
+                    default:
+                        Console.Clear();
+                        EndGame(player, score, false);
                         break;
                 }
                 Console.Clear();
@@ -147,11 +166,13 @@ namespace SpicyInvaders
             else
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Your Win");
+                Console.WriteLine("Your Win "+player.nickName);
                 Console.WriteLine("Score : " + score.points);
                 Console.WriteLine("\n1 - PlayAgain");
                 Console.WriteLine("2 - Menu");
                 Console.WriteLine("3 - Exit");
+                Console.WriteLine("\n\nPress your number option");
+
                 ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 switch (keyPressed.Key)
                 {
@@ -163,6 +184,12 @@ namespace SpicyInvaders
                         break;
                     case ConsoleKey.D3:
                         Environment.Exit(0);
+                        Console.Clear();
+                        EndGame(player, score, false);
+                        break;
+                    default:
+                        Console.Clear();
+                        EndGame(player, score, false);
                         break;
                 }
                 Console.Clear();
@@ -180,7 +207,7 @@ namespace SpicyInvaders
                 {
                     case ConsoleKey.RightArrow:
                         //Task: limiter le movement
-                        if (player.x > limitMapRight)
+                        if (player._x > limitMapRight)
                         {
                             player.Move(false, false);
                         }
@@ -191,7 +218,7 @@ namespace SpicyInvaders
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        if (player.x < limitMapLeft)
+                        if (player._x < limitMapLeft)
                         {
 
                             player.Move(false, false);
@@ -204,7 +231,7 @@ namespace SpicyInvaders
                     case ConsoleKey.Spacebar:
                         if (player.canAttack)
                         {
-                            bullets.Add(new Bullet(player.x + 6, player.y, ConsoleColor.Yellow, true));
+                            bullets.Add(new Bullet(player._x + 6, player._y, ConsoleColor.Yellow, true, 3, 1));
                             player.canAttack = false;
                         }
                         break;
@@ -217,7 +244,7 @@ namespace SpicyInvaders
 
         static void EnemiesMovement(List<Alien> enemies, int limitMapLeft, int limitMapRight)
         {
-            if (enemies[0].x < limitMapLeft)
+            if (enemies[0]._x < limitMapLeft)
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -226,7 +253,7 @@ namespace SpicyInvaders
                 }
             }
 
-            if (enemies[enemies.Count - 1].x > limitMapRight)
+            if (enemies[enemies.Count - 1]._x > limitMapRight)
             {
                 for (int i = 0; i < enemies.Count; i++)
                 {
@@ -241,7 +268,7 @@ namespace SpicyInvaders
 
                 if (enemies[i].moveDown)
                 {
-                    enemies[i].y++;
+                    enemies[i]._y++;
                     enemies[i].moveDown = false;
                 }
             }
@@ -255,9 +282,10 @@ namespace SpicyInvaders
                 {
                     bullets[i].Move();
 
-                    if (bullets[i].y < 4 || bullets[i].y > Console.WindowHeight - 2)
+                    if (bullets[i]._y < 4 || bullets[i]._y > Console.BufferHeight - 2)
                     {
-                        bullets[i].alive = false;
+                        bullets[i]._life=0;
+                        bullets.RemoveAt(i);
                     }
                 }
             }
@@ -267,7 +295,7 @@ namespace SpicyInvaders
         {
             Random rnd = new Random();
             int rndEnemey = rnd.Next(0, enemies.Count);
-            if (enemies.Count != 0) { bullets.Add(new Bullet(enemies[rndEnemey].x + enemies[rndEnemey].assetLimitX / 2, enemies[rndEnemey].y + enemies[rndEnemey].assetLimitY, ConsoleColor.DarkRed, false)); }
+            if (enemies.Count != 0) { bullets.Add(new Bullet(enemies[rndEnemey]._x + enemies[rndEnemey].assetLimitX / 2, enemies[rndEnemey]._y + enemies[rndEnemey].assetLimitY, ConsoleColor.DarkRed, false, 1,1)); }
         }
 
         static void CollisionSystem(List<Alien> enemies, List<Bullet> bullets, Player player, Score score)
@@ -280,17 +308,16 @@ namespace SpicyInvaders
                 {
                     for (int i = 0; i < enemies.Count; i++)
                     {
-                        if ((bullets[e].y >= enemies[i].y && bullets[e].y <= enemies[i].y + 5 && bullets[e].x >= enemies[i].x && bullets[e].x <= enemies[i].x + 10) && bullets.Count != 0 && enemies.Count != 0)
+                        if ((bullets[e]._y >= enemies[i]._y && bullets[e]._y <= enemies[i]._y + 5 && bullets[e]._x >= enemies[i]._x && bullets[e]._x <= enemies[i]._x + 10) && bullets.Count != 0 && enemies.Count != 0)
                         {
                             score.points += score.pointsForEnemy;
-                            if (enemies[i].life != 1)
-                            {
 
-                                enemies[i].life--;
-                            }
-                            else
+                            enemies[i]._life--;
+
+                            if (!enemies[i]._IsAlive())
                             {
                                 enemies.RemoveAt(i);
+
                             }
 
                             bullets.RemoveAt(e);
@@ -300,18 +327,13 @@ namespace SpicyInvaders
                 }
                 else
                 {
-                    if (bullets[e].y >= player.y && bullets[e].y <= player.dimensionY + player.y && bullets[e].x >= player.x && bullets[e].x <= player.x + player.dimensionX)
+                    if (bullets[e]._y >= player._y && bullets[e]._y <= player.dimensionY + player._y && bullets[e]._x >= player._x && bullets[e]._x <= player._x + player.dimensionX)
                     {
                         score.points -= score.pointsForDmg;
 
-                        if (player.life != 1)
-                        {
-                            player.life--;
-                        }
-                        else
-                        {
-                            player.isAlive = false;
-                        }
+                        
+                            player._life--;
+                        
                         bullets.RemoveAt(e);
                     }
                 }
@@ -323,7 +345,7 @@ namespace SpicyInvaders
         {
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (enemies[i].alive)
+                if (enemies[i]._IsAlive())
                 {
                     enemies[i].Draw();
                 }
@@ -337,7 +359,7 @@ namespace SpicyInvaders
         {
             for (int i = 0; i < bullets.Count; i++)
             {
-                if (bullets[i].alive)
+                if (bullets[i]._IsAlive())
                 {
                     bullets[i].Draw();
                 }
@@ -352,7 +374,7 @@ namespace SpicyInvaders
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Player : " + player.nickName);
-            Console.WriteLine("{0} LIVES : " + player.life);
+            Console.WriteLine("LIVES : " + player._life);
             Console.WriteLine("SCORE : " + score.points);
         }
 
@@ -386,12 +408,19 @@ namespace SpicyInvaders
             Console.WriteLine("SpicyInvader - Highscore");
             Console.WriteLine("------------------------\n");
             databaseConnection.Highscore();
-            databaseConnection.Highscore();
-            Console.Write("1# - NickName: {0} Points: {1}", databaseConnection.playersName[0], databaseConnection.playersScore[0]);
-            Console.Write("\n2# - NickName: {0} Points: {1}", databaseConnection.playersName[1], databaseConnection.playersScore[1]);
-            Console.Write("\n3# - NickName: {0} Points: {1}", databaseConnection.playersName[2], databaseConnection.playersScore[2]);
-            Console.Write("\n4# - NickName: {0} Points: {1}", databaseConnection.playersName[3], databaseConnection.playersScore[3]);
-            Console.Write("\n5# - NickName: {0} Points: {1}", databaseConnection.playersName[4], databaseConnection.playersScore[4]);
+            try
+            {
+                Console.Write("1# - NickName: {0} Points: {1}", databaseConnection.playersName[0], databaseConnection.playersScore[0]);
+                Console.Write("\n2# - NickName: {0} Points: {1}", databaseConnection.playersName[1], databaseConnection.playersScore[1]);
+                Console.Write("\n3# - NickName: {0} Points: {1}", databaseConnection.playersName[2], databaseConnection.playersScore[2]);
+                Console.Write("\n4# - NickName: {0} Points: {1}", databaseConnection.playersName[3], databaseConnection.playersScore[3]);
+                Console.Write("\n5# - NickName: {0} Points: {1}", databaseConnection.playersName[4], databaseConnection.playersScore[4]);
+            }
+            catch
+            {
+                Console.WriteLine("Error in DataBase");
+            }
+            
 
             Console.WriteLine("\n\nPress any key to back to menu");
 

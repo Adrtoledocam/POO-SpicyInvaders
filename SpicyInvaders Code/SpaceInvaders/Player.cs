@@ -8,14 +8,8 @@ using System.Diagnostics;
 
 namespace SpicyInvaders
 {
-    internal class Player
+    public class Player : ObjectBase
     {
-        public int x;
-        public int y;
-        public ConsoleColor _color;
-        public int speed = 1;
-        public int life = 3;
-        public bool isAlive = true;
         public bool moveAllowRight = false;
         public bool moveAllowLeft = false;
         public bool canAttack = true;
@@ -33,11 +27,13 @@ namespace SpicyInvaders
             @" █▄█ ███ █▄█ "
         };
 
-        public Player(int originX, int originY, ConsoleColor color)
+        public Player(int originX, int originY, ConsoleColor color, int speed, int life )
         {
-            x = originX;
-            y = originY;
+            _x = originX;
+            _y = originY;
             _color = color;
+            _speed = speed;
+            _life = life;
 
             moveAllowLeft = true;
             moveAllowRight = true;
@@ -46,17 +42,17 @@ namespace SpicyInvaders
 
         public void Draw()
         {
-            if (life == 3)
+            if (_life == 3)
             {
                 Console.ForegroundColor = _color;
 
             }
-            else if (life == 2)
+            else if (_life == 2)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
 
             }
-            else if (life == 1)
+            else if (_life == 1)
             {
                 Console.ForegroundColor = ConsoleColor.DarkBlue;
             }
@@ -65,11 +61,11 @@ namespace SpicyInvaders
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
             }
 
-            if (life != 0)
+            if (_life != 0)
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Console.SetCursorPosition(this.x, this.y + i);
+                    Console.SetCursorPosition(this._x, this._y + i);
                     Console.WriteLine(drawPlayer[i]);
                 }
             }
@@ -83,11 +79,11 @@ namespace SpicyInvaders
         {
             if (moveLeft)
             {
-                x = x - speed;
+                _x = _x - _speed;
             }
             if (moveRight)
             {
-                x = x + speed;
+                _x = _x + _speed;
             }
         }
 

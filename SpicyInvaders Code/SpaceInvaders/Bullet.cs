@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SpicyInvaders
 {
-    internal class Bullet
+    public class Bullet :ObjectBase
     {
-        public int x;
-        public int y;
-        public int speed = 3;
-        public bool alive = true;
-        public ConsoleColor colorBullet;
 
         public bool fromPlayer;
         public bool destroyed;
@@ -20,45 +16,38 @@ namespace SpicyInvaders
         private string simpleDrawBullet = "█";
         private string drawDeathBullet = "";
 
-        public Bullet(int originX, int originY, ConsoleColor bulletColor, bool player)
+        public Bullet(int originX, int originY, ConsoleColor bulletColor, bool player, int speed, int life)
         {
-            x = originX;
-            y = originY;
-            colorBullet = bulletColor;
+            _x = originX;
+            _y = originY;
+            _color = bulletColor;
+            _speed = speed;
+            _life = life;
 
             fromPlayer = player;
-
-            /*Heritage
-            _x = originX; 
-            _y = originY;
-            _speed = speed;
-            _life = oLife;
-            _isAlive = true;
-            _color = bulletColor;
-            */
         }
 
         public void Draw()
         {
-            Console.ForegroundColor = colorBullet;
-            Console.SetCursorPosition(this.x, this.y);
+            Console.ForegroundColor = _color;
+            if (!_OutLimitWindowYCheck(Console.BufferHeight)) 
+            {
+                Console.SetCursorPosition(_x, _y);
+            }
             Console.Write(simpleDrawBullet);
         }
         public void Move()
         {
             if (fromPlayer)
             {
-                y = y - speed;
+                _y = _y - _speed;
             }
             else
             {
-                y = y + speed;
+                _y = _y + _speed;
             }
         }
 
-        public void Destroy()
-        {
-            alive = false;
-        }
+        
     }
 }

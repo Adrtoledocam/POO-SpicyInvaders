@@ -10,9 +10,33 @@ namespace SpicyInvaders
     {
         public int _x { get; set; }
         public int _y { get; set; }
-        public ConsoleColor _color { get; set;}
+        public ConsoleColor _color { get; set; }
         public int _speed { get; set; }
         public int _life { get; set; }
-        public bool _isAlice { get; set; }
+        public bool _isAlive { get; set; }
+
+
+        public bool _IsAlive()
+        {
+            if (_life <= 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        public bool _OutLimitWindowYCheck(int windowHeight)
+        {
+            if (this._y <= 0 || this._y >= windowHeight)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

@@ -7,14 +7,8 @@ using SpicyInvaders;
 
 namespace SpicyInvaders
 {
-    internal class Alien
+    internal class Alien : ObjectBase
     {
-        public int x;
-        public int y;
-        public ConsoleColor colorAlien;
-        public int speed = 5;
-        public int life = 3;
-        public bool alive = true;
 
         public bool moveLeft = false;
         public bool moveDown = false;
@@ -47,30 +41,32 @@ namespace SpicyInvaders
             @"█▀ ██ ██ ▀█",
         };
         //11 x 3
-        public Alien(int originX, int originY, ConsoleColor colorSkin)
+        public Alien(int originX, int originY, ConsoleColor colorSkin, int speed, int life)
         {
-            x = originX + 1;
-            y = originY;
-            colorAlien = colorSkin;
+            _x = originX + 1;
+            _y = originY;
+            _color = colorSkin;
+            _speed = speed;
+            _life = life;
         }
         public void Draw()
         {
-            if (alive)
+            if (this._IsAlive())
             {
-                Console.ForegroundColor = colorAlien;
-                if (life == 3)
+                Console.ForegroundColor = _color;
+                if (_life == 3)
                 {
                     for (int i = 0; i < 5; i++)
                     {
-                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.SetCursorPosition(this._x, this._y + i);
                         Console.WriteLine(drawAlien3[i]);
                     }
                 }
-                else if (life == 2)
+                else if (_life == 2)
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.SetCursorPosition(this._x, this._y + i);
                         Console.WriteLine(drawAlien2[i]);
                     }
                 }
@@ -78,7 +74,7 @@ namespace SpicyInvaders
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        Console.SetCursorPosition(this.x, this.y + i);
+                        Console.SetCursorPosition(this._x, this._y + i);
                         Console.WriteLine(drawAlien1[i]);
                     }
                 }
@@ -90,11 +86,11 @@ namespace SpicyInvaders
         {
             if (moveLeft)
             {
-                x = x - speed;
+                _x = _x - _speed;
             }
             else
             {
-                x = x + speed;
+                _x = _x + _speed;
             }
         }
     }
