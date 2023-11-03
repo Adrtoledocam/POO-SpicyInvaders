@@ -349,21 +349,25 @@ namespace SpicyInvaders
                 {
                     for (int i = 0; i < enemies.Count; i++)
                     {
-                        if ((bullets[e]._y >= enemies[i]._y && bullets[e]._y <= enemies[i]._y + 5 && bullets[e]._x >= enemies[i]._x && bullets[e]._x <= enemies[i]._x + 10) && bullets.Count != 0 && enemies.Count != 0)
+                        if (bullets.Count != 0 && enemies.Count != 0)
                         {
-                            score.points += score.pointsForEnemy;
-
-                            enemies[i]._life--;
-
-                            if (!enemies[i]._IsAlive())
+                            if ((bullets[e]._y >= enemies[i]._y && bullets[e]._y <= enemies[i]._y + 5 && bullets[e]._x >= enemies[i]._x && bullets[e]._x <= enemies[i]._x + 10))
                             {
-                                enemies.RemoveAt(i);
+                                score.points += score.pointsForEnemy;
+
+                                enemies[i]._life--;
+
+                                if (!enemies[i]._IsAlive())
+                                {
+                                    enemies.RemoveAt(i);
+
+                                }
+
+                                bullets.RemoveAt(e);
 
                             }
-
-                            bullets.RemoveAt(e);
-
                         }
+                        
                     }
                 }
                 else
